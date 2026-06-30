@@ -16,15 +16,12 @@ body {
   min-height: 100vh;
 
   background: linear-gradient(-45deg, #6a11cb, #2575fc, #00c9ff, #92fe9d);
-
   background-size: 400% 400%;
   animation: gradient 12s ease infinite;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: white;
+
+  overflow-x: hidden;
 }
 
 /* Animated Background */
@@ -48,6 +45,7 @@ body {
 .container {
   width: 700px;
   max-width: 95%;
+  margin: 40px auto;
 }
 
 /* Glass Cards */
@@ -369,9 +367,10 @@ p {
 @media (max-width: 700px) {
 
   .container {
-    width: 95%;
+    width: 100%;
+    max-width: 95%;
     margin: 20px auto;
-    padding: 15px;
+    padding: 0 10px;
   }
 
   .navbar {
