@@ -12,6 +12,8 @@ import "./App.css";
 
 function App() {
 
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [user, setUser] = useState("");
 
   return (
@@ -21,7 +23,7 @@ function App() {
         <UserModal setUser={setUser}/>
       ) : (
         <>
-          <Navbar user={user} />
+          <Navbar user={user} setUser={setUser} />
           <TodoForm />
           <TodoList />
           

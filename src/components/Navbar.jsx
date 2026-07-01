@@ -1,6 +1,13 @@
 
 
-function Navbar({ user }) {
+function Navbar({ user, setUser }) {
+
+    function handleLogout(){
+       
+        setUser('');
+    }
+
+
 
     return (
 
@@ -8,7 +15,7 @@ function Navbar({ user }) {
 
             <h2>Hello, {user} 👋</h2>
 
-            <button className="user-btn">
+            <button className="user-btn" onClick={handleLogout}>
                 Logout
             </button>
 
