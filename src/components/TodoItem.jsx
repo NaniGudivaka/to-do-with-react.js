@@ -1,12 +1,26 @@
 import { FaTrash, FaEdit, FaCheck } from "react-icons/fa";
+import axios from "axios";
 
-function TodoItem({ todo }) {
+function TodoItem({ todo, setTodos }) {
+
+  const handleDelete = async () => {
+  try {
+    await axios.delete(`http://localhost:3000/user/delete/${todo.id}`);
+
+    // // Refresh todos
+    // fetchTodos();
+
+    setTodos(prevTodos => prevTodos.filter(item => item.id !== todo.id));
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
 
     <div className="todo-item">
 
-      <span>{todo.task}</span>
+      <span>{todo.tasks}</span>
 
       <div className="icons">
 
@@ -14,7 +28,7 @@ function TodoItem({ todo }) {
 
         <FaEdit />
 
-        <FaTrash />
+        <FaTrash onClick={handleDelete}/>
 
       </div>
 

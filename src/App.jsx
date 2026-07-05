@@ -1,12 +1,13 @@
 
 
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import UserModal from "./components/UserModal";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 // import TodoItem from "./components/TodoItem";
+import axios from "axios";
 import "./App.css";
 
 
@@ -16,6 +17,23 @@ function App() {
 
   const [user, setUser] = useState("");
   const [todos, setTodos] = useState([]);
+  useEffect(() => {
+  if (!user) return;
+
+  const fetchTodos = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/user/users/${user.id}`
+      );
+
+      setTodos(response.data.todos);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchTodos();
+}, [user]);
 
   return (
     <div className="container">
@@ -25,9 +43,9 @@ function App() {
       ) : (
         <>
           <Navbar user={user} setUser={setUser} />
-          <TodoForm user={user} todos={todos}
+          <TodoForm user={user} 
             setTodos={setTodos} />
-          <TodoList todos={todos} />
+          <TodoList todos={todos} setTodos={setTodos}/>
 
         </>
       )}

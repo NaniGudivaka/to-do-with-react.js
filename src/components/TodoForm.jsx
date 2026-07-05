@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-function TodoForm({user}) {
+function TodoForm({user, setTodos}) {
 
   const [tasks, setTasks] = useState('');
 
@@ -16,12 +16,24 @@ function TodoForm({user}) {
     });
 
     console.log(response.data);
+    await fetchTodos();
     setTasks('');
   }catch(error){
     console.log(error);
   }
 
   }
+  const fetchTodos = async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/user/users/${user.id}`
+    );
+
+    setTodos(response.data.todos);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
 
