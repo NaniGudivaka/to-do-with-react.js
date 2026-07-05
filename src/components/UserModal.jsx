@@ -11,20 +11,20 @@ function UserModal({ setUser }) {
 
     if (!name.trim() || !email.trim()) return;
 
-   try{
+    try {
 
-    const response = await axios.post('http://localhost:3000/auth/continue',{
-      name,
-      email,
-    });
-    console.log(response.data);
-    setUser(response.data.user);
+      const response = await axios.post('http://localhost:3000/auth/continue', {
+        name,
+        email,
+      });
+      console.log(response.data);
+      setUser(response.data.user);
 
-   }catch(error){
+    } catch (error) {
 
-    console.log(error);
+      console.log(error);
 
-   }
+    }
   };
 
   return (
@@ -43,7 +43,7 @@ function UserModal({ setUser }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-         <input
+        <input
           type="email"
           placeholder="Your email"
           value={email}
@@ -54,6 +54,11 @@ function UserModal({ setUser }) {
         <button>Continue</button>
 
       </form>
+
+      <p>
+        <strong>🚧 **This project is under active development. Most core features have been implemented. The backend deployment is currently being finalized, so some functionality may be temporarily unavailable. Feel free to explore the application and check back for future updates!**</strong>
+      </p>
+
 
     </div>
 

@@ -18,22 +18,22 @@ function App() {
   const [user, setUser] = useState("");
   const [todos, setTodos] = useState([]);
   useEffect(() => {
-  if (!user) return;
+    if (!user) return;
 
-  const fetchTodos = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/user/users/${user.id}`
-      );
+    const fetchTodos = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/user/users/${user.id}`
+        );
 
-      setTodos(response.data.todos);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+        setTodos(response.data.todos);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  fetchTodos();
-}, [user]);
+    fetchTodos();
+  }, [user]);
 
   return (
     <div className="container">
@@ -43,9 +43,13 @@ function App() {
       ) : (
         <>
           <Navbar user={user} setUser={setUser} />
-          <TodoForm user={user} 
+          <TodoForm user={user}
             setTodos={setTodos} />
-          <TodoList todos={todos} setTodos={setTodos}/>
+          <TodoList todos={todos} setTodos={setTodos} />
+
+          <p>🚧 Work in Progress
+
+            This Todo application is currently under active development. Features such as task completion, task editing enhancements, and other improvements are being implemented. Thank you for checking out the project!</p>
 
         </>
       )}
