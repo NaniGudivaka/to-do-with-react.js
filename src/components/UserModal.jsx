@@ -1,17 +1,30 @@
 import { useState } from "react";
+import axios from "axios";
 
 function UserModal({ setUser }) {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name.trim()) return;
+    if (!name.trim() || !email.trim()) return;
 
-    // Backend API later
-    setUser(name);
+   try{
+
+    const response = await axios.post('http://localhost:3000/auth/continue',{
+      name,
+      email,
+    });
+    console.log(response.data);
+    setUser(response.data.user);
+
+   }catch(error){
+
+    console.log(error);
+
+   }
   };
 
   return (

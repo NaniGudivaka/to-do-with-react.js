@@ -15,18 +15,20 @@ function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [user, setUser] = useState("");
+  const [todos, setTodos] = useState([]);
 
   return (
     <div className="container">
 
       {!user ? (
-        <UserModal setUser={setUser}/>
+        <UserModal setUser={setUser} />
       ) : (
         <>
           <Navbar user={user} setUser={setUser} />
-          <TodoForm />
-          <TodoList />
-          
+          <TodoForm user={user} todos={todos}
+            setTodos={setTodos} />
+          <TodoList todos={todos} />
+
         </>
       )}
 

@@ -1,4 +1,27 @@
-function TodoForm() {
+import { useState } from "react";
+import axios from "axios";
+function TodoForm({user}) {
+
+  const [tasks, setTasks] = useState('');
+
+ async function handleClick(e){
+    e.preventDefault();
+
+    if(!tasks.trim()) return;
+
+  try{
+    const response = await axios.post('http://localhost:3000/user/todo',{
+      user_id: user.id,
+      tasks
+    });
+
+    console.log(response.data);
+    setTasks('');
+  }catch(error){
+    console.log(error);
+  }
+
+  }
 
   return (
 
@@ -7,9 +30,11 @@ function TodoForm() {
       <input
         type="text"
         placeholder="Enter a task..."
+        value={tasks}
+        onChange={(e) => setTasks(e.target.value)}
       />
 
-      <button>Add</button>
+      <button onClick={handleClick}>Add</button>
 
     </div>
 

@@ -1,9 +1,9 @@
 
 import TodoItem from "./TodoItem";
 
-function TodoList() {
+function TodoList({todos}) {
 
-  const todos = [];
+  // const todos = [];
 
   return (
 

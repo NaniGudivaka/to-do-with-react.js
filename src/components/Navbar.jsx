@@ -13,7 +13,7 @@ function Navbar({ user, setUser }) {
 
         <div className="navbar">
 
-            <h2>Hello, {user} 👋</h2>
+            <h2>Hello, {user.name} 👋</h2>
 
             <button className="user-btn" onClick={handleLogout}>
                 Logout
