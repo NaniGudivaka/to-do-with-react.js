@@ -13,7 +13,7 @@ function UserModal({ setUser }) {
 
     try {
 
-      const response = await axios.post('http://localhost:3000/auth/continue', {
+      const response = await axios.post('https://todo-backend-with-node-js-mysql.onrender.com/auth/continue', {
         name,
         email,
       });

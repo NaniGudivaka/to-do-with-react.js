@@ -5,7 +5,7 @@ function TodoItem({ todo, setTodos }) {
 
   const handleDelete = async () => {
   try {
-    await axios.delete(`http://localhost:3000/user/delete/${todo.id}`);
+    await axios.delete(`https://todo-backend-with-node-js-mysql.onrender.com/user/delete/${todo.id}`);
 
     // // Refresh todos
     // fetchTodos();

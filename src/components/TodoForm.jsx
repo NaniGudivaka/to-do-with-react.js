@@ -10,7 +10,7 @@ function TodoForm({user, setTodos}) {
     if(!tasks.trim()) return;
 
   try{
-    const response = await axios.post('http://localhost:3000/user/todo',{
+    const response = await axios.post('https://todo-backend-with-node-js-mysql.onrender.com/user/todo',{
       user_id: user.id,
       tasks
     });
@@ -26,7 +26,7 @@ function TodoForm({user, setTodos}) {
   const fetchTodos = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/user/users/${user.id}`
+      `https://todo-backend-with-node-js-mysql.onrender.com/user/users/${user.id}`
     );
 
     setTodos(response.data.todos);
