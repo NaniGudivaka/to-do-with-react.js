@@ -19,7 +19,7 @@ function TodoForm({user, setTodos}) {
     await fetchTodos();
     setTasks('');
 
-    
+
   }catch(error){
     console.log(error);
   }
@@ -48,7 +48,8 @@ function TodoForm({user, setTodos}) {
         onChange={(e) => setTasks(e.target.value)}
         onKeyDown={(e) =>{
           if(e.key === 'Enter'){
-            handleClick();
+            console.log('LOgged');
+            handleClick(e);
           }
         }}
       />
