@@ -48,7 +48,7 @@ function TodoForm({user, setTodos}) {
         onChange={(e) => setTasks(e.target.value)}
         onKeyDown={(e) =>{
           if(e.key === 'Enter'){
-            console.log('LOgged');
+            
             handleClick(e);
           }
         }}
