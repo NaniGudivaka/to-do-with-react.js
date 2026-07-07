@@ -18,6 +18,8 @@ function TodoForm({user, setTodos}) {
     console.log(response.data);
     await fetchTodos();
     setTasks('');
+
+    
   }catch(error){
     console.log(error);
   }
@@ -44,6 +46,11 @@ function TodoForm({user, setTodos}) {
         placeholder="Enter a task..."
         value={tasks}
         onChange={(e) => setTasks(e.target.value)}
+        onKeyDown={(e) =>{
+          if(e.key === 'Enter'){
+            handleClick();
+          }
+        }}
       />
 
       <button onClick={handleClick}>Add</button>
