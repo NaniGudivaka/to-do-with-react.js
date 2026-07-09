@@ -61,7 +61,7 @@ function TodoForm({user, setTodos}) {
         }}
       />
 
-      <button onClick={handleClick} disabled={loading || !TaskSignal.trim()}>{loading ? 'Adding...' : 'Add'}</button>
+      <button onClick={handleClick} disabled={loading || !tasks.trim()}>{loading ? 'Adding...' : 'Add'}</button>
 
     </div>
 
