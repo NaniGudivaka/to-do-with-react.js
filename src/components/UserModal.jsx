@@ -5,11 +5,14 @@ function UserModal({ setUser }) {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name.trim() || !email.trim()) return;
+
+    setLoading(true);
 
     try {
 
@@ -24,6 +27,8 @@ function UserModal({ setUser }) {
 
       console.log(error);
 
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -51,7 +56,7 @@ function UserModal({ setUser }) {
           required
         />
 
-        <button>Continue</button>
+        <button type="submit" disabled={loading}>{loading ? 'Please wait...' : 'Continue'}</button>
 
       </form>
 

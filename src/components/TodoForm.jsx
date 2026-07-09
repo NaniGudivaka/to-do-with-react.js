@@ -3,11 +3,16 @@ import axios from "axios";
 function TodoForm({user, setTodos}) {
 
   const [tasks, setTasks] = useState('');
+  const [loading, setLoading] = useState(false);
 
  async function handleClick(e){
     e.preventDefault();
 
+    if(loading) return;
+
     if(!tasks.trim()) return;
+
+    setLoading(true);
 
   try{
     const response = await axios.post('https://todo-backend-with-node-js-mysql.onrender.com/user/todo',{
@@ -22,6 +27,8 @@ function TodoForm({user, setTodos}) {
 
   }catch(error){
     console.log(error);
+  }finally{
+    setLoading(false);
   }
 
   }
@@ -54,7 +61,7 @@ function TodoForm({user, setTodos}) {
         }}
       />
 
-      <button onClick={handleClick}>Add</button>
+      <button onClick={handleClick} disabled={loading || !TaskSignal.trim()}>{loading ? 'Adding...' : 'Add'}</button>
 
     </div>
 
