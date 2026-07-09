@@ -38,19 +38,19 @@ function UserModal({ setUser }) {
 
       <h1>Welcome 👋</h1>
 
-      <p>Enter your name</p>
+      <p>Please Enter Your Details</p>
 
       <form onSubmit={handleSubmit}>
 
         <input
           type="text"
-          placeholder="Your Name"
+          placeholder="Enter Your Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
           type="email"
-          placeholder="Your email"
+          placeholder="Enter Your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
