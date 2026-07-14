@@ -8,6 +8,11 @@ function TodoForm({user, setTodos}) {
  async function handleClick(e){
     e.preventDefault();
 
+    if(tasks.length > 500){
+      alert('Task cannot exceed 500 characters');
+      return;
+    }
+
     if(loading) return;
 
     if(!tasks.trim()) return;
@@ -26,6 +31,9 @@ function TodoForm({user, setTodos}) {
 
 
   }catch(error){
+    alert(
+      error.response?.dat?.message || 'Something went wrong'
+    );
     console.log(error);
   }finally{
     setLoading(false);
