@@ -418,15 +418,15 @@ button:disabled {
 }
 
 .check-mark {
-  color: #9ca3af;   /* Gray */
+  color: gray;
   cursor: pointer;
 }
 
 .check-mark.completed {
-  color: #22c55e;   /* Green */
+  color: green;
 }
 
-.task.completed {
-  color: #6b7280;
+.completed-task {
+  color: gray;
   text-decoration: line-through;
 }
