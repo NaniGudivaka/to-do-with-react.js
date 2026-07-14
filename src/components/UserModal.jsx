@@ -21,6 +21,7 @@ function UserModal({ setUser }) {
         email,
       });
       console.log(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       setUser(response.data.user);
 
     } catch (error) {

@@ -15,7 +15,10 @@ function App() {
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     if (!user) return;

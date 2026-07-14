@@ -2,9 +2,10 @@
 
 function Navbar({ user, setUser }) {
 
-    function handleLogout(){
-       
-        setUser('');
+    function handleLogout() {
+
+        localStorage.removeItem("user");
+        setUser(null);
     }
 
 
