@@ -16,6 +16,7 @@ function TodoItem({ todo, setTodos }) {
   }
 };
 
+
   return (
 
     <div className="todo-item">
@@ -24,7 +25,7 @@ function TodoItem({ todo, setTodos }) {
 
       <div className="icons">
 
-        <FaCheck />
+        <FaCheck className={todo.completed ? 'check-mark completed' : 'check-mark'}/>
 
         <FaEdit />
 
