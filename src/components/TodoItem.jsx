@@ -1,7 +1,7 @@
 import { FaTrash, FaEdit, FaCheck } from "react-icons/fa";
 import axios from "axios";
 
-function TodoItem({ todo, setTodos }) {
+function TodoItem({ todo, setTodos, setEditingId, setEditingTask }) {
 
   const handleDelete = async () => {
     try {
@@ -15,6 +15,19 @@ function TodoItem({ todo, setTodos }) {
       console.log(error);
     }
   };
+
+  //Update
+
+  // const handleUpdate = async () =>{
+  //   try{
+  //     await axios.put(`https://todo-backend-with-node-js-mysql.onrender.com/user/edit/${todo.id}`);
+
+
+  //   }catch(err){
+  //     console.log('Error', err);
+  //   }
+  // }
+  //completion function
   const toggleComplete = async (id) => {
     try {
       const res = await axios.put(`https://todo-backend-with-node-js-mysql.onrender.com/user/edit/${todo.id}`);
@@ -24,7 +37,7 @@ function TodoItem({ todo, setTodos }) {
       );
     }
 catch(err){
-  console.log(err)
+  console.log('Error',err);
 }
 };
 
@@ -40,7 +53,10 @@ catch(err){
           onClick={() => toggleComplete(todo.id)}
         />
 
-        <FaEdit />
+        <FaEdit onClick={() =>{
+          setEditingId(todo.id);
+          setEditingTask(todo.tasks);
+        }}/>
 
         <FaTrash onClick={handleDelete} />
 

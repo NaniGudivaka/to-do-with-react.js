@@ -1,7 +1,7 @@
 
 import TodoItem from "./TodoItem";
 
-function TodoList({todos, setTodos}) {
+function TodoList({todos, setTodos, setEditingId, setEditingTask}) {
 
   // const todos = [];
 
@@ -14,7 +14,7 @@ function TodoList({todos, setTodos}) {
           <p>No Tasks Available</p>
         ) : (
           todos.map(todo => (
-            <TodoItem key={todo.id} todo={todo} setTodos={setTodos}/>
+            <TodoItem key={todo.id} todo={todo} setTodos={setTodos} setEditingId={setEditingId} setEditingTask={setEditingTask}/>
           ))
         )
       }

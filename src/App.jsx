@@ -14,6 +14,8 @@ import "./App.css";
 function App() {
 
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [editingId, setEditingId] = useState(null);
+  const [editingTask, setEditingTask] = useState("");
 
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
@@ -46,9 +48,15 @@ function App() {
       ) : (
         <>
           <Navbar user={user} setUser={setUser} />
+          
           <TodoForm user={user}
-            setTodos={setTodos} />
-          <TodoList todos={todos} setTodos={setTodos} />
+            setTodos={setTodos} 
+            editingId={editingId}
+            setEditingId={setEditingId}
+            editingTask={editingTask}
+            setEditingTask={setEditingTask}/>
+
+          <TodoList todos={todos} setTodos={setTodos} setEditingId={setEditingId} setEditingTask={setEditingTask}/>
 
           <p>🚧 Work in Progress
 
